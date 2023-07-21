@@ -17,12 +17,19 @@ RSpec.describe 'Foods Search Index', type: :feature do
       #(sweet potatoes should find more than 30,000 results)
     end
     
-    it "lists ten foods that contain 'sweet potatoes'"
+    it "lists ten foods that contain 'sweet potatoes'" do
+      within (".results") do 
+        expect(page).to have_css(".food", count: 10)
+      end
+    end
 
-    it 'lists attributes of those foods'
-    #The food's GTIN/UPC code
-    # The food's description
-    # The food's Brand Owner
-    # The food's ingredients
+    it 'lists attributes of those foods' do 
+      within(first(".food")) do 
+        expect(page).to have_css(".code")
+        expect(page).to have_css(".description")
+        expect(page).to have_css(".brand-owner")
+        expect(page).to have_css(".ingredients")
+      end
+    end
   end
 end
