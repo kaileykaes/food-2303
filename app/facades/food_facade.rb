@@ -4,8 +4,6 @@ class FoodFacade
     response = FoodService.call("/search?query=#{search_param}")[:foods]
     create_foods(response)
   end
-
-
 end
 
 private
