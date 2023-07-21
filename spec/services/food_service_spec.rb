@@ -13,11 +13,11 @@ RSpec.describe FoodService do
 
   describe 'class method' do 
     it '#call' do 
-      response = FoodService.call('/foods/list')
+      response = FoodService.call('/list')
       expect(response).to be_a Hash
-      expect(response[:data]).to be_a Array
+      expect(response[:foods]).to be_a Array
 
-      food_data = response[:data].first
+      food_data = response[:foods].first
       expect(food_data).to have_key(:gtinUpc)
       expect(food_data[:gtinUpc]).to be_a String
 
