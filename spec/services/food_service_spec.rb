@@ -13,28 +13,22 @@ RSpec.describe FoodService do
 
   describe 'class method' do 
     it '#call' do 
-      response = FoodService.call('/api/v1/foods/search?query="sweetpotatoes"')
+      response = FoodService.call('/foods/list')
       expect(response).to be_a Hash
       expect(response[:data]).to be_a Array
 
       food_data = response[:data].first
-      expect(food_data).to have_key(:id)
-      expect(food_data[:id]).to be_a String
+      expect(food_data).to have_key(:gtinUpc)
+      expect(food_data[:gtinUpc]).to be_a String
 
-      expect(food_data).to have_key(:attributes)
-      expect(food_data[:attributes]).to be_a Hash
-
-      expect(food_data[:attributes]).to have_key(:name)
-      expect(food_data[:attributes][:name]).to be_a String
+      expect(food_data).to have_key(:brandOwner)
+      expect(food_data[:brandOwner]).to be_a String
 
       expect(food_data[:attributes]).to have_key(:description)
       expect(food_data[:attributes][:description]).to be_a String
 
-      expect(food_data[:attributes]).to have_key(:unit_price)
-      expect(food_data[:attributes][:unit_price]).to be_a Float
-
-      expect(food_data[:attributes]).to have_key(:merchant_id)
-      expect(food_data[:attributes][:merchant_id]).to be_an Integer
+      expect(food_data[:attributes]).to have_key(:ingredients)
+      expect(food_data[:attributes][:ingredients]).to be_a String
     end
   end
 end
