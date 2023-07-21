@@ -4,7 +4,7 @@ RSpec.describe 'Foods Search Index', type: :feature do
   before(:each) do
     visit root_path
    save_and_open_page
-    fill_in :foods, with: "sweet potatoes"
+    fill_in :q, with: "sweet potatoes"
     click_on "Search"
   end
 
@@ -12,10 +12,11 @@ RSpec.describe 'Foods Search Index', type: :feature do
     it 'search routes to /foods index' do 
       expect(current_path).to eq(foods_path)
     end
+
     xit 'displays number of items returned by search' do 
       expect(page).to have_css(".result_number")
+      #(sweet potatoes should find more than 30,000 results)
     end
-#(sweet potatoes should find more than 30,000 results)
     
     it "lists ten foods that contain 'sweet potatoes'"
 
