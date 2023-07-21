@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Foods Search Index', type: :feature do
   before(:each) do
     visit root_path
-   save_and_open_page
     fill_in :q, with: "sweet potatoes"
     click_on "Search"
   end
